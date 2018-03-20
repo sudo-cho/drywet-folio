@@ -26,7 +26,7 @@ export default {
   align-items center
   justify-content center
 
-  .home__logo
+  &__logo
     width 350px
     height auto
 </style>

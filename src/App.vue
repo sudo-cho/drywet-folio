@@ -6,15 +6,12 @@
 
 <script>
 export default {
-  name: 'App'
+  name: "App"
 }
 </script>
 
 <style lang="stylus">
-@font-face 
-    font-family "SnellRoundhand"
-    src url("/assets/fonts/snellRoundHand/SnellRoundHand.ttf")
-    font-weight 400
+@import "./styles/fonts"
 
 html 
   box-sizing border-box
