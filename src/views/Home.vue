@@ -1,7 +1,7 @@
 <template lang="pug">
     .home
       img.home__logo(src="../assets/img/dw-logo.jpg")
-      dwMenu
+      DwMenu
 </template>
 
 <script>
@@ -29,4 +29,5 @@ export default {
   .home__logo
     width 350px
     height auto
+    // comment for test issue
 </style>
