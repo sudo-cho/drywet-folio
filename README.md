@@ -1,7 +1,5 @@
 # drywet-folio
 
-> portfolio for drywet records
-
 ## Build Setup
 
 ``` bash
