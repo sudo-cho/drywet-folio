@@ -29,5 +29,4 @@ export default {
   .home__logo
     width 350px
     height auto
-    // comment for test issue
 </style>
