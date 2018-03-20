@@ -1,7 +1,7 @@
 <template lang="pug">
     .home
       img.home__logo(src="../assets/img/dw-logo.jpg")
-      dwMenu
+      DwMenu
 </template>
 
 <script>
