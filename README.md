@@ -17,3 +17,7 @@ npm run build --report
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+## Stack
+
+The project is built over [Pug](https://pugjs.org/api/getting-started.html) and [Stylus](http://stylus-lang.com/) (click to them to see their corresponding documentation)
