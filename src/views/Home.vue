@@ -5,11 +5,11 @@
 </template>
 
 <script>
-import DwMenu from '@/components/DwMenu'
+import DwMenu from "@/components/DwMenu"
 export default {
-    name: 'Home',
+    name: "Home",
     components: {
-        'DwMenu': DwMenu
+        "DwMenu": DwMenu
     }
 }
 </script>
@@ -26,7 +26,7 @@ export default {
   align-items center
   justify-content center
 
-  .home__logo
+  &__logo
     width 350px
     height auto
 </style>

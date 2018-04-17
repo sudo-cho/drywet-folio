@@ -16,23 +16,16 @@ export default {
             ]
         }
     }
-    
 }
 </script>
 
 <style lang="stylus">
-@font-face 
-    font-family "SnellRoundhand"
-    src url("../assets/fonts/snellRoundHand/SnellRoundHand.ttf")
-    font-weight 400
-
   .dwmenu
     position absolute
     bottom 90px
-    font-family "snellRoundHand" 
     font-weight 400
     font-size 1.4em
     display flex
-    width 50%
+    width 40%
     justify-content space-between
 </style>
