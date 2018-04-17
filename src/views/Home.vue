@@ -5,11 +5,11 @@
 </template>
 
 <script>
-import DwMenu from '@/components/DwMenu'
+import DwMenu from "@/components/DwMenu"
 export default {
-    name: 'Home',
+    name: "Home",
     components: {
-        'DwMenu': DwMenu
+        "DwMenu": DwMenu
     }
 }
 </script>

@@ -16,16 +16,13 @@ export default {
             ]
         }
     }
-    
 }
 </script>
 
 <style lang="stylus">
-
   .dwmenu
     position absolute
     bottom 90px
-    font-family "SnellRoundHand" 
     font-weight 400
     font-size 1.4em
     display flex

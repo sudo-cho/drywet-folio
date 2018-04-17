@@ -1,10 +1,7 @@
 <template lang="pug">
 .artists
-  h1.artists__title artists
-  .artists__content
-    .artists__content__names
-      h2.artists__content__names__item(v-for="(artist, key) in artists", @click="changePicture(key)") {{ artist.name }}
-    img.artists__content__picture(:src="currentPicture")
+  .artists__names
+    h2.artists__names__item(v-for="(artist, key) in artists" @mouseover="moveFonts($event)") {{ artist }}
 </template>
 
 <script>
@@ -12,55 +9,70 @@ export default {
     name: 'Artists',
     data () {
         return {
-            "currentPicture": "https://i1.sndcdn.com/avatars-000231968890-bzwwp6-t500x500.jpg",
             "artists": [
-                {"name": "Gray Umber sky", "img": ""},
-                {"name": "Voyana", "img": ""},
-                {"name": "Bpouille", "img": ""},
-                {"name": "Yamee", "img": ""},
-                {"name": "0-Gravité", "img": ""},
-                {"name": "Aleqsandr", "img": ""}
-            ]
+                "Gray Umber sky",
+                "Voyana",
+                "Bpouille",
+                "Yamee",
+            ],
+            "loop": false
         }
     },
     methods: {
-        imagePath (path) {
-            return require("../assets/" + path)
+        loopAnimationFonts (target) {
+            target.classList.add("artists__names__item--bolditalic")
+            setTimeout( _ => {
+                target.classList.remove("artists__names__item--bolditalic")
+                target.classList.add("artists__names__item--bold")
+            }, 250)
+            setTimeout( _ => {
+                target.classList.remove("artists__names__item--bold")
+                target.classList.add("artists__names__item--normal")
+            }, 500)
+            setTimeout( _ => {
+                target.classList.remove("artists__names__item--normal")
+            }, 750)
         },
-        changePicture(key) {
-            return this.currentPicture = artists[key].img;
+        moveFonts (event) {
+            const target = event.target
+            setInterval(this.loopAnimationFonts(target), 1000)
+        },
+        endMoveFonts () {
+            clearInterval(this.loopAnimationFonts)
         }
-     }
+    }
 }
 </script>
 
 <style lang="stylus">
 .artists
-.artists__content
-  display flex
-  align-items center
-  justify-content center
-  
-.artists
-  background hsla(0, 0%, 98%, 100%)
   width 100vw
-  height 100vh
+  min-height 100vh
+  background hsla(0, 0%, 98%, 100%)
   margin 0
-  padding 0
-  flex-direction column
+  padding 100px 75px 0 0
 
-  &__title
-    font-size 4em
-    letter-spacing 15px
+  &__names
+    display flex
+    flex-direction column
+    align-items flex-end
+    text-transform uppercase
+    text-align right
+    font-size 6.5em
+    font-family 'muller_narrowlight_italic'
 
-  &__content
-    flex-direction row
+    &__item
+      margin 0
+      margin-top -35px
+      display inline-block
 
-    &__names
-      text-align right
-      font-size 1.5em
+      &--bolditalic
+        font-family 'muller_narrowextrabold_italic'
+      &--bold
+        font-family 'muller_narrowextrabold'
+      &--normal
+        font-family 'muller_narrowlight'
 
-    &__picture
-      background red
-  
+      &:hover
+        cursor pointer
 </style>
