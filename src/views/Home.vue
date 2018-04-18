@@ -9,7 +9,7 @@ import DwMenu from "@/components/DwMenu"
 export default {
     name: "Home",
     components: {
-        "DwMenu": DwMenu
+        DwMenu
     }
 }
 </script>

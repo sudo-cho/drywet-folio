@@ -22,6 +22,7 @@ html, body
 
 body
   font-size 14px
+  color #1e1e1c
 
 *,
 *::before,
