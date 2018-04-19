@@ -1,7 +1,7 @@
 <template lang="pug">
 .artists
   .artists__names
-    router-link(class="no-link" to="/artist" v-for="(artist, key) in artists")
+    router-link(class="no-link" to="/artist" v-for="(artist, key) in artists" :key="`key-${artist}`")
       h2.artists__names__item( @mouseover="moveFonts($event)") {{ artist }}
 </template>
 

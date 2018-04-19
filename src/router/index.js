@@ -5,6 +5,7 @@ import Home from '@/views/Home'
 import Artists from '@/views/Artists'
 import Artist from '@/views/Artist'
 import Releases from '@/views/Releases'
+import ReleaseItem from '@/views/ReleaseItem'
 
 Vue.use(Router)
 
@@ -29,6 +30,11 @@ export default new Router({
             path: '/releases',
             name: 'Releases',
             component: Releases
+        },
+        {
+            path: '/release',
+            name: 'ReleaseItem',
+            component: ReleaseItem
         }
     ]
 })
