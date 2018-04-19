@@ -1,6 +1,7 @@
 <template lang="pug">
 .dwmenu
-  .dwmenu__item(v-for="title in menus") {{ title }}
+  router-link(v-for="item in menus" :to="item.src" :key="`key-${item.title}`" class="no-link")
+    .dwmenu__item {{ item.title }}
 </template>
 
 <script>
@@ -9,10 +10,10 @@ export default {
     data () {
         return {
             "menus": [
-                "artists",
-                "releases",
-                "videos",
-                "about"
+                {"title": "artists", "src": "/artists"},
+                {"title": "releases", "src": "/releases"},
+                {"title": "videos", "src": "/videos"},
+                {"title": "about", "src": "/about"}
             ]
         }
     }
@@ -28,4 +29,7 @@ export default {
     width 40%
     justify-content space-between
     font 1.4em 'Playfair Display', serif
+
+    &:hover
+      cursor pointer
 </style>

@@ -1,12 +1,16 @@
-
 <template lang="pug">
-  #app
-    router-view
+#app
+  DwHeader
+  router-view
 </template>
 
 <script>
+import DwHeader from "@/components/DwHeader"
 export default {
-  name: "App"
+    name: "App",
+    components: {
+        DwHeader
+    }
 }
 </script>
 
@@ -24,6 +28,12 @@ body
   font-size 14px
   color #1e1e1c
 
+.no-link:link,
+.no-link:visited
+    text-decoration inherit
+    color inherit
+    cursor pointer
+    
 *,
 *::before,
 *::after 
