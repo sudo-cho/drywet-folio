@@ -13,8 +13,8 @@ export default {
 <style lang="stylus">
 .dwheader
   position absolute
-  top 25px
-  left 25px
+  top 45px
+  left 45px
   z-index 5
 
   &__logo
