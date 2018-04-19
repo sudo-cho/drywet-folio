@@ -49,7 +49,6 @@ export default {
 .artists
   width 100vw
   min-height 100vh
-  background hsla(0, 0%, 98%, 100%)
   margin 0
   padding 100px 75px 0 0
 

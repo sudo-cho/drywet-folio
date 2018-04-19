@@ -24,7 +24,7 @@ export default {
   .dwmenu
     position absolute
     bottom 90px
-    font-weight 400
+    font-weigh t 400
     display flex
     width 40%
     justify-content space-between

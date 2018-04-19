@@ -16,7 +16,6 @@ export default {
 
 <style lang="stylus">
 .home
-  background hsla(0, 0%, 98%, 100%)
   width 100vw
   height 100vh
   margin 0

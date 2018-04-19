@@ -27,6 +27,7 @@ html, body
 body
   font-size 14px
   color #1e1e1c
+  background #e8e8e8
 
 .no-link:link,
 .no-link:visited
