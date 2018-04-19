@@ -1,7 +1,8 @@
 <template lang="pug">
 .artists
   .artists__names
-    h2.artists__names__item(v-for="(artist, key) in artists" @mouseover="moveFonts($event)") {{ artist }}
+    router-link(class="no-link" to="/artist" v-for="(artist, key) in artists")
+      h2.artists__names__item( @mouseover="moveFonts($event)") {{ artist }}
 </template>
 
 <script>
