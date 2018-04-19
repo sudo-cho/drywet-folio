@@ -24,8 +24,8 @@ export default {
     position absolute
     bottom 90px
     font-weight 400
-    font-size 1.4em
     display flex
     width 40%
     justify-content space-between
+    font 1.4em 'Playfair Display', serif
 </style>

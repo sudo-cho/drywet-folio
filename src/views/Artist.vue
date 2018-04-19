@@ -4,7 +4,7 @@
     h1.artist__top__title Gray Umber Sky
     p.artist__top__location paris paris paris paris paris paris paris paris paris paris paris paris paris paris paris paris paris paris paris paris paris paris
   .artist__releases
-    Release
+    Release(:artistPage="true")
   .artist__content
     .artist__content__lineseparator
     .artist__content__img
