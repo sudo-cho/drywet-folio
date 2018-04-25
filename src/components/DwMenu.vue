@@ -1,12 +1,16 @@
 <template lang="pug">
-.dwmenu
+.dwmenu(:class="{'dwmenu--header': menu}")
   router-link(v-for="item in menus" :to="item.src" :key="`key-${item.title}`" class="no-link")
-    .dwmenu__item {{ item.title }}
+    .dwmenu__item(:class="{'dwmenu__item--header': menu}") {{ item.title }}
+      .dwmenu__item--header__separator(v-if="menu" :class="{'dwmenu__item--header__separator--active': $route.name === item.title}")
 </template>
 
 <script>
 export default {
     name: 'DwMenu',
+    props: {
+        "menu": false
+    },
     data () {
         return {
             "menus": [
@@ -30,6 +34,51 @@ export default {
     justify-content space-between
     font 1.4em 'Playfair Display', serif
 
+    &--header
+      position initial
+      bottom initial
+      flex-direction column
+      align-items center
+      font-size 5em
+      width initial
+
     &:hover
       cursor pointer
+
+    &__item
+     &:hover
+        .dwmenu__item--header__separator
+          opacity 1  
+
+      &--header
+        margin-bottom 10px
+        position relative
+
+        &__separator
+          position absolute
+          left -110px
+          width 430px
+          height 25px
+          top 50%
+          opacity 0
+
+          &--active
+            opacity 1
+
+          &:before, &:after
+            content ''
+            display block
+            width 45px
+            height 1px
+            background #1e1e1c
+            position absolute
+            top 50%
+
+          &:before
+            left 0
+
+          &:after
+            right 0
+      
 </style>
+
