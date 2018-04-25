@@ -13,22 +13,22 @@ export default new Router({
     routes: [
         {
             path: '/',
-            name: 'Home',
+            name: 'home',
             component: Home
         },
         {
             path: '/artists',
-            name: 'Artists',
+            name: 'artists',
             component: Artists
         },
         {
             path: '/artist',
-            name: 'Artist',
+            name: 'artist',
             component: Artist
         },
         {
             path: '/releases',
-            name: 'Releases',
+            name: 'releases',
             component: Releases
         },
         {
