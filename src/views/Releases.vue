@@ -1,7 +1,6 @@
 <template lang="pug">
 .releases
-  router-link(to="/release" class="no-link")
-    Release(:releasePage="true")
+  Release(:releasePage="true")
 </template>
 
 <script>

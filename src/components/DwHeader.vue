@@ -96,6 +96,4 @@ export default {
       
       &:after
         transform rotate(-45deg)
-
-
 </style>

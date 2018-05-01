@@ -1,10 +1,13 @@
 <template lang="pug">
 .releaseItem
-  .releaseItem__text
-    h1.releaseItem__text__title A simple world
-    p.releaseItem__text__description Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at augue eget arcu dictum varius duis at consectetur lorem donec? Posuere morbi leo urna, molestie! Lacus vel facilisis volutpat, est velit egestas dui, id ornare arcu odio ut sem nulla pharetra diam sit amet nisl suscipit adipiscing! Et, sollicitudin ac orci phasellus egestas tellus rutrum.
   Release.releaseItem__release
-  .releaseItem__tracklist
+  .releaseItem__content 
+    .releaseItem__content__lineseparator
+    .releaseItem__content--left
+      .releaseItem__content__title Listen
+    .releaseItem__content--right
+      .releaseItem__content__title Infos
+      p.releaseItem__text__description Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at augue eget arcu dictum varius duis at consectetur lorem donec? Posuere morbi leo urna, molestie! Lacus vel facilisis volutpat, est velit egestas dui, id ornare arcu odio ut sem nulla pharetra diam sit amet nisl suscipit adipiscing! Et, sollicitudin ac orci phasellus egestas tellus rutrum.
 </template>
 
 <script>
@@ -20,15 +23,12 @@ export default {
 
 <style lang="stylus">
 .releaseItem
-  height 100vh
-  display flex
-  align-items center
   width 95vw
   margin 0 auto
 
   &__release
-    margin 21px 146px 0 148px
-
+    margin 275px auto 0 auto
+  
   &__text
     text-align right
 
@@ -38,8 +38,27 @@ export default {
       font 1.8em 'muller_narrowlight'
       width 450px
 
-  &__tracklist
-    border 1px solid #1e1e1c
-    width 200px
-    height 450px
+  &__content
+    display flex
+    width 100%
+    justify-content space-between
+    align-items flex-start
+    position relative
+    margin-top 100px
+    
+    &__lineseparator
+      width 3px
+      background #1e1e1c
+      height 95%
+      position absolute
+      top -200px
+      left 50%
+      transform translate3d(-50%, 0, 0)
+      z-index -2
+
+    &__title
+      font 15em 'muller_narrowextrabold_italic'
+      opacity 0.3
+      text-align center
+      text-transform uppercase
 </style>
