@@ -14,6 +14,7 @@ export default {
     data () {
         return {
             "menus": [
+                {"title": "home", "src": "/"},
                 {"title": "artists", "src": "/artists"},
                 {"title": "releases", "src": "/releases"},
                 {"title": "videos", "src": "/videos"},
