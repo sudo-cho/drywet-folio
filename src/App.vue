@@ -1,15 +1,18 @@
 <template lang="pug">
 #app
+  CursorElm
   DwHeader
-  router-view
+  router-view.elm
 </template>
 
 <script>
 import DwHeader from "@/components/DwHeader"
+import CursorElm from "@/components/Cursor"
 export default {
     name: "App",
     components: {
-        DwHeader
+        DwHeader,
+        CursorElm
     }
 }
 </script>
@@ -29,6 +32,9 @@ body
   color #1e1e1c
   background #e8e8e8
 
+.elm
+  position relative
+  z-index 2
 .no-link:link,
 .no-link:visited
     text-decoration inherit

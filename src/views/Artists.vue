@@ -1,8 +1,14 @@
 <template lang="pug">
-.artists
+.artists(ref="artists")
   .artists__names
-    router-link(class="no-link" to="/artist" v-for="(artist, key) in artists" :key="`key-${artist}`")
-      h2.artists__names__item( @mouseover="moveFonts($event)") {{ artist }}
+    router-link(class="no-link" :to="`/artist/${artist.link}`" v-for="(artist, key) in artists" :key="`key-${artist}`")
+      h2.artists__names__item( @mouseover="moveFonts($event)" @mouseleave="endMoveFonts" ref="myFont") {{ artist.name }}
+    h2.artists__names__item COMING SOON
+    h2.artists__names__item COMING SOON
+    h2.artists__names__item COMING SOON
+    h2.artists__names__item COMING SOON
+    h2.artists__names__item COMING SOON
+    h2.artists__names__item COMING SOON
 </template>
 
 <script>
@@ -11,15 +17,21 @@ export default {
     data () {
         return {
             "artists": [
-                "Gray Umber sky",
-                "Voyana",
-                "Bpouille",
-                "Yamee",
+                {"name": "Gray Umber sky", "link": "grayumbersky"}
             ],
-            "loop": false
+            "myInterval": null
         }
     },
+    mounted () {
+        this.loopAnimationFonts(this.$refs.myFont[0])
+        setTimeout ( _ => {
+            this.showContent()
+        }, 1000)
+    },
     methods: {
+        showContent () {
+            this.$refs.artists.style.visibility = "visible"
+        },
         loopAnimationFonts (target) {
             target.classList.add("artists__names__item--bolditalic")
             setTimeout( _ => {
@@ -36,10 +48,14 @@ export default {
         },
         moveFonts (event) {
             const target = event.target
-            setInterval(this.loopAnimationFonts(target), 1000)
+            const self = this
+            this.loopAnimationFonts(target)
+            this.myInterval = setInterval( function () {
+                self.loopAnimationFonts(target)
+            }, 1000)
         },
         endMoveFonts () {
-            clearInterval(this.loopAnimationFonts)
+            clearInterval(this.myInterval)
         }
     }
 }
@@ -47,6 +63,7 @@ export default {
 
 <style lang="stylus">
 .artists
+  visibility hidden
   width 100vw
   min-height 100vh
   margin 0
@@ -65,6 +82,7 @@ export default {
       margin 0
       margin-top -35px
       display inline-block
+      min-height 180px
 
       &--bolditalic
         font-family 'muller_narrowextrabold_italic'
@@ -73,6 +91,4 @@ export default {
       &--normal
         font-family 'muller_narrowlight'
 
-      &:hover
-        cursor pointer
 </style>

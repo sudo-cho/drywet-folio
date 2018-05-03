@@ -17,6 +17,21 @@ export default {
     name: "ReleaseItem",
     components: {
         Release
+    },
+    created () {
+        this.checkRouteArtist()
+    },
+    watch: {
+        '$route': 'checkRouteArtist'
+    },
+    methods: {
+        checkRouteArtist () {
+            switch (this.$route.params.artistname) {
+            case 'grayumbersky':
+                // this.currentArtist = this.artists[0]
+                break
+            }
+        }
     }
 }
 </script>
@@ -27,7 +42,8 @@ export default {
   margin 0 auto
 
   &__release
-    margin 275px auto 0 auto
+    padding 275px 0 0 0
+    margin 0 auto
   
   &__text
     text-align right

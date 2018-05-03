@@ -2,8 +2,8 @@
 .dwheader(v-if="$route.name !== 'home'")
   .dwheader__logo(@click="openMenu")
     .dwheader__logo__item
-    p.dwheader__logo__text(v-if="$route.name !== 'artist'") {{$route.name}}
-    p.dwheader__logo__text(v-else) test
+    p.dwheader__logo__text(v-if="$route.name !== 'artist' && $route.name !== 'release'") {{$route.name}}
+    p.dwheader__logo__text(v-else) {{ $route.params.artistname }}
   .dwheader__menu(:class="{'dwheader__menu--active': toggleMenu}")
     .dwheader__menu__exit(@click="closeMenu")
     .dwheader__menu__list(@click="closeMenu")
