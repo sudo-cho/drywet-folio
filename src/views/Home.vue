@@ -1,7 +1,8 @@
 <template lang="pug">
 .home
   img.home__logo(src="../assets/img/drywetlogo.svg")
-  DwMenu
+  transition(name="fade")
+    DwMenu
 </template>
 
 <script>
@@ -15,6 +16,14 @@ export default {
 </script>
 
 <style lang="stylus">
+.fade-enter-active,
+.fade-leave-active
+  transition opacity .5s
+
+.fade-enter,
+.fade-leave-to 
+  opacity: 0
+
 .home
   width 100vw
   height 100vh

@@ -1,20 +1,23 @@
 <template lang="pug">
 .artist
   .artist__top
-    h1.artist__top__title Gray Umber Sky
-    p.artist__top__location paris paris paris paris paris paris paris paris paris paris paris paris paris paris paris paris paris paris paris paris paris paris
+    h1.artist__top__title {{ currentArtist.name }}
+    p.artist__top__location.artist__marquee 
+      span.artist__top__location__item {{locations}}
+      span.artist__top__location__item {{locations}}
+      span.artist__top__location__item {{locations}}
   .artist__releases
     Release(:artistPage="true")
   .artist__content
     .artist__content__lineseparator
     .artist__content__img
-    p.artist__content__text.artist__content__text--left Quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim, sit. Venenatis tellus in metus vulputate eu scelerisque felis imperdiet proin fermentum leo vel orci porta? Montes, nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel? Urna, molestie at elementum eu, facilisis sed odio morbi quis commodo odio aenean sed adipiscing diam donec adipiscing.
+    p.artist__content__text.artist__content__text--left {{ currentArtist.descLeft }}
     .artist__content__quote
-      p.artist__content__quote__text.artist__content__quote__text--default Artist's chosen quote
-      p.artist__content__quote__text.artist__content__quote__text--bold Artist's chosen quote
-      p.artist__content__quote__text.artist__content__quote__text--outlineBold Artist's chosen quote
-      p.artist__content__quote__text.artist__content__quote__text--outline Artist's chosen quote
-    p.artist__content__text.artist__content__text--right Quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim, sit. Venenatis tellus in metus vulputate eu scelerisque felis imperdiet proin fermentum leo vel orci porta? Montes, nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel? Urna, molestie at elementum eu, facilisis sed odio morbi quis commodo odio aenean sed adipiscing diam donec adipiscing.
+      p.artist__content__quote__text.artist__content__quote__text--default {{ currentArtist.quote }}
+      p.artist__content__quote__text.artist__content__quote__text--bold {{ currentArtist.quote }}
+      p.artist__content__quote__text.artist__content__quote__text--outlineBold {{ currentArtist.quote }}
+      p.artist__content__quote__text.artist__content__quote__text--outline {{ currentArtist.quote }}
+    p.artist__content__text.artist__content__text--right {{ currentArtist.descRight }}
     .artist__content__bottom
       Carousel(:perPage="3" :paginationEnabled="false")
         Slide(v-for="(slide, key) in slides" :key="`slide-${key}`")
@@ -22,24 +25,21 @@
   .artist__footer
     h2.artist__footer__title Also Discover
     .artist__footer__line.artist__footer__line--top
-      p.artist__footer__line__text Bpouille
-      p.artist__footer__line__text Yamee
-      p.artist__footer__line__text Monoclaus
-      p.artist__footer__line__text Aleqsandr
-      p.artist__footer__line__text 0-gravité
-      p.artist__footer__line__text JSTN
-    .artist__footer__line.artist__fotter__line--bottom
-      p.artist__footer__line__text Bpouille
-      p.artist__footer__line__text Yamee
-      p.artist__footer__line__text Monoclaus
-      p.artist__footer__line__text Aleqsandr
-      p.artist__footer__line__text 0-gravité
-      p.artist__footer__line__text JSTN
+      p.artist__footer__line__text.artist__marquee
+        span.artist__footer__line__text__item {{ comingSoon }}
+        span.artist__footer__line__text__item {{ comingSoon }}
+        span.artist__footer__line__text__item {{ comingSoon }}
+    .artist__footer__line.artist__footer__line--bottom
+      p.artist__footer__line__text.artist__marqueeReversed
+        span.artist__footer__line__text__item {{ comingSoon }}
+        span.artist__footer__line__text__item {{ comingSoon }}
+        span.artist__footer__line__text__item {{ comingSoon }}
 </template>
 
 <script>
 import Release from "@/components/Release"
 import { Carousel, Slide } from 'vue-carousel'
+import * as R from "ramda"
 
 export default {
     name: 'Artist',
@@ -47,6 +47,12 @@ export default {
         Release,
         Carousel,
         Slide
+    },
+    created () {
+        this.checkRouteArtist()
+    },
+    watch: {
+        '$route': 'checkRouteArtist'
     },
     data () {
         return {
@@ -56,14 +62,64 @@ export default {
                 "slide3",
                 "slide4",
                 "slide5"
+            ],
+            "currentArtist": null,
+            "artists": [
+                {
+                    "name": "Gray Umber Sky",
+                    "location": "Paris",
+                    "quote": "artist chosen quote",
+                    "descLeft": "Quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim, sit. Venenatis tellus in metus vulputate eu scelerisque felis imperdiet proin fermentum leo vel orci porta? Montes, nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel? Urna, molestie at elementum eu, facilisis sed odio morbi quis commodo odio aenean sed adipiscing diam donec adipiscing.",
+                    "descRight": "Quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim, sit. Venenatis tellus in metus vulputate eu scelerisque felis imperdiet proin fermentum leo vel orci porta? Montes, nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel? Urna, molestie at elementum eu, facilisis sed odio morbi quis commodo odio aenean sed adipiscing diam donec adipiscing."
+                },
+                {
+                    "name": "Monoclaus",
+                    "location": "Paris",
+                    "quote": "artist chosen quote",
+                    "descLeft": "Quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim, sit. Venenatis tellus in metus vulputate eu scelerisque felis imperdiet proin fermentum leo vel orci porta? Montes, nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel? Urna, molestie at elementum eu, facilisis sed odio morbi quis commodo odio aenean sed adipiscing diam donec adipiscing.",
+                    "descRight": "Quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim, sit. Venenatis tellus in metus vulputate eu scelerisque felis imperdiet proin fermentum leo vel orci porta? Montes, nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel? Urna, molestie at elementum eu, facilisis sed odio morbi quis commodo odio aenean sed adipiscing diam donec adipiscing."
+                }
             ]
         }
+    },
+    computed: {
+        locations () {
+            return R.join(" ", R.repeat(this.currentArtist.location, 16))
+        },
+        comingSoon () {
+            return R.join(" ", R.repeat("coming soon", 6))
+        }
+    },
+    methods: {
+        checkRouteArtist () {
+            switch (this.$route.params.artistname) {
+            case 'grayumbersky':
+                this.currentArtist = this.artists[0]
+                break
+            }
+        }
     }
+    
 }
 </script>
 
 <style lang="stylus">
+@keyframes marquee {
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(-100%, 0); }
+}
+
+@keyframes marqueeReversed {
+    0%   { transform: translate(-100%, 0); }
+    100% { transform: translate(0, 0); }
+}
+
 .artist
+  &__marquee
+    animation: marquee 50s linear infinite
+  &__marqueeReversed
+    animation: marqueeReversed 50s linear infinite
+
   &__top
     text-transform uppercase
     position relative
@@ -75,11 +131,15 @@ export default {
       margin 0
       padding 55px 55px 0 0
       letter-spacing 15px
+
     &__location
       font 1.2em 'muller_narrowlight_italic'
       letter-spacing 5px
       word-spacing 40px
       white-space nowrap
+
+      &__item
+        padding-right: 55px;
 
   &__releases, &__content
     padding 85px 0
@@ -220,12 +280,15 @@ export default {
 
     &__line
       width 100%
-      display flex
-      align-items center
-      justify-content space-between
+      overflow hidden
+      position relative
 
       &__text
         margin 0
         font 4em 'muller_narrowextrabold_italic'
         letter-spacing 5px
+        white-space nowrap
+
+        &__item
+          padding-right 15px
 </style>

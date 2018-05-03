@@ -23,7 +23,7 @@ export default new Router({
             component: Artists
         },
         {
-            path: '/artist',
+            path: '/artist/:artistname',
             name: 'artist',
             component: Artist
         },

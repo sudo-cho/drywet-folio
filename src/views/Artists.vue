@@ -1,8 +1,14 @@
 <template lang="pug">
 .artists
   .artists__names
-    router-link(class="no-link" to="/artist" v-for="(artist, key) in artists" :key="`key-${artist}`")
-      h2.artists__names__item( @mouseover="moveFonts($event)") {{ artist }}
+    router-link(class="no-link" :to="`/artist/${artist.link}`" v-for="(artist, key) in artists" :key="`key-${artist}`")
+      h2.artists__names__item( @mouseover="moveFonts($event)") {{ artist.name }}
+    h2.artists__names__item( @mouseover="moveFonts($event)") COMING SOON
+    h2.artists__names__item( @mouseover="moveFonts($event)") COMING SOON
+    h2.artists__names__item( @mouseover="moveFonts($event)") COMING SOON
+    h2.artists__names__item( @mouseover="moveFonts($event)") COMING SOON
+    h2.artists__names__item( @mouseover="moveFonts($event)") COMING SOON
+    h2.artists__names__item( @mouseover="moveFonts($event)") COMING SOON
 </template>
 
 <script>
@@ -11,10 +17,7 @@ export default {
     data () {
         return {
             "artists": [
-                "Gray Umber sky",
-                "Voyana",
-                "Bpouille",
-                "Yamee",
+                {"name": "Gray Umber sky", "link": "grayumbersky"}
             ],
             "loop": false
         }
@@ -73,6 +76,4 @@ export default {
       &--normal
         font-family 'muller_narrowlight'
 
-      &:hover
-        cursor pointer
 </style>

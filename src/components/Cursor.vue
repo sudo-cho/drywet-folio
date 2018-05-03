@@ -10,8 +10,8 @@ export default {
     name: 'cursorElm',
     mounted () {
 	      window.onmousemove = this.updateCursorPosition
-        this.setup()
-        this.draw()
+        // this.setup()
+        // this.draw()
     },
     data () {
         return {
@@ -92,7 +92,7 @@ export default {
     transform translate3d(0,0,0)
 
   &__small 
-    background #efefef
+    background #000
     width 16px
     height 16px
     border-radius 50%

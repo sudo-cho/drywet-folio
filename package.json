@@ -10,6 +10,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "ramda": "^0.25.0",
     "simplex-noise": "^2.4.0",
     "vue": "^2.5.2",
     "vue-carousel": "^0.7.0",

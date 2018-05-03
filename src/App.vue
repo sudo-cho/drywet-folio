@@ -22,7 +22,7 @@ export default {
 
 html 
   box-sizing border-box
-  cursor none
+  // cursor none
 
 html, body
   margin 0

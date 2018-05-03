@@ -45,11 +45,10 @@ export default {
             "numberCount": 1,
             "releases": [
                 {"name": "Inner Calm", "artist": "Monoclaus", "ref": "DW001", "img":"https://f4.bcbits.com/img/a2844472041_16.jpg", "date": "2018"},
-                {"name": "2", "artist": "Monoclaus2", "ref": "DW002", "img":"https://f4.bcbits.com/img/a2844472041_16.jpg", "date": "2018"},
-                {"name": "House du Ghetto", "artist": "Bpouille", "ref": "DW003", "img":"https://f4.bcbits.com/img/a2844472041_16.jpg", "date": "2018"},
-                {"name": "Germany Mix", "artist": "Aleqsandr", "ref": "DW004", "img":"https://f4.bcbits.com/img/a2844472041_16.jpg", "date": "2018"},
-                {"name": "Voyage voyage", "artist": "Gray Umber Sky", "ref": "DW005", "img":"https://f4.bcbits.com/img/a2844472041_16.jpg", "date": "2018"},
-                {"name": "SkateBoard Mix", "artist": "JSTN", "ref": "DW006", "img":"https://f4.bcbits.com/img/a2844472041_16.jpg", "date": "2018"}
+                {"name": "Coming soon", "artist": "coming soon", "ref": "DW002", "img":"https://f4.bcbits.com/img/a2844472041_16.jpg", "date": "2018"},
+                {"name": "Coming soon", "artist": "coming soon", "ref": "DW003", "img":"https://f4.bcbits.com/img/a2844472041_16.jpg", "date": "2018"},
+                {"name": "Coming soon", "artist": "coming soon", "ref": "DW004", "img":"https://f4.bcbits.com/img/a2844472041_16.jpg", "date": "2018"},
+                {"name": "Coming soon", "artist": "coming soon", "ref": "DW005", "img":"https://f4.bcbits.com/img/a2844472041_16.jpg", "date": "2018"}
             ]
         }
     },
