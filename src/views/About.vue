@@ -1,39 +1,39 @@
 <template lang="pug">
 .about
-  full-page
-    .about__section.about__section.section
-      .about__section__content.about__section__content--1
-        h3.about__section__content__sub few words
-        h2.about__section__content__title about us
-        .about__section__content__arrow
-    .about__section.about__section.section
-      .about__section__content.about__section__content--2
-        .about__section__content__left
-          .about__section__content__left__content
-            h3.about__section__content__left__content__title {{title[0]}}
-            img.about__section__content__left__content__img(src="../assets/img/drywetlogo.svg")
-        .about__section__content__right
-          p.about__section__content__right__description We care about the sound we produce. We are a french label. We are DRYWET.
-    .about__section.about__section.section
-      .about__section__content.about__section__content--3
-        .about__section__content__left
-          .about__section__content__left__content
-            h3.about__section__content__left__content__title {{title[1]}}
-            img.about__section__content__left__content__img(src="../assets/img/drywetlogo.svg")
-        .about__section__content__right
-          .about__section__content__right__location
-            h3.about__section__content__right__location__item(v-for="item in locations") {{item}}.
+  //- full-page
+  .about__section.about__section.section
+    .about__section__content.about__section__content--1
+      h3.about__section__content__sub few words
+      h2.about__section__content__title about us
+      .about__section__content__arrow
+  .about__section.about__section.section
+    .about__section__content.about__section__content--2
+      .about__section__content__left
+        .about__section__content__left__content
+          h3.about__section__content__left__content__title {{title[0]}}
+          img.about__section__content__left__content__img(src="../assets/img/drywetlogo.svg")
+      .about__section__content__right
+        p.about__section__content__right__description We care about the sound we produce. We are a french label. We are DRYWET.
+  .about__section.about__section.section
+    .about__section__content.about__section__content--3
+      .about__section__content__left
+        .about__section__content__left__content
+          h3.about__section__content__left__content__title {{title[1]}}
+          img.about__section__content__left__content__img(src="../assets/img/drywetlogo.svg")
+      .about__section__content__right
+        .about__section__content__right__location
+        h3.about__section__content__right__location__item(v-for="item in locations") {{item}}.
 </template>
 
 <script>
-import FullPage from 'vue-fullpage.js/src/FullPage.vue'
+// import FullPage from 'vue-fullpage.js/src/FullPage.vue'
 export default {
     name: "About",
     components: {
-        FullPage
+        // FullPage
     },
-    destroyed () {
-        this.enableScroll() 
+    beforeDestroy () {
+        // this.enableScroll()
     },
     data () {
         return {
@@ -48,14 +48,20 @@ export default {
             ]
         }
     },
-    components: {
-        enableScroll () {
+    methods: {
+        preventDefault(e) {
+            e = e || window.event
+            if (e.preventDefault)
+                e.preventDefault()
+            e.returnValue = false
+        },
+        enableScroll() {
             if (window.removeEventListener)
-                window.removeEventListener('DOMMouseScroll', preventDefault, false)
+                window.removeEventListener('DOMMouseScroll', this.preventDefault, false)
             window.onmousewheel = document.onmousewheel = null
             window.onwheel = null
-            window.ontouchmove = null
-            document.onkeydown = null  
+            window.ontouchmove = null  
+            document.onkeydown = null 
         }
     }
 }
