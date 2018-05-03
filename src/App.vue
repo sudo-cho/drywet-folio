@@ -1,15 +1,18 @@
 <template lang="pug">
 #app
+  CursorElm
   DwHeader
   router-view
 </template>
 
 <script>
 import DwHeader from "@/components/DwHeader"
+import CursorElm from "@/components/Cursor"
 export default {
     name: "App",
     components: {
-        DwHeader
+        DwHeader,
+        CursorElm
     }
 }
 </script>
@@ -19,6 +22,7 @@ export default {
 
 html 
   box-sizing border-box
+  cursor none
 
 html, body
   margin 0
