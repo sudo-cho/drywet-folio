@@ -2,7 +2,7 @@
 #app
   CursorElm
   DwHeader
-  router-view
+  router-view.elm
 </template>
 
 <script>
@@ -22,7 +22,6 @@ export default {
 
 html 
   box-sizing border-box
-  // cursor none
 
 html, body
   margin 0
@@ -33,6 +32,9 @@ body
   color #1e1e1c
   background #e8e8e8
 
+.elm
+  position relative
+  z-index 2
 .no-link:link,
 .no-link:visited
     text-decoration inherit
