@@ -11,7 +11,7 @@
       .release__bottom__options__next -->
         
 .release(v-else-if="releasePage")
-  router-link(to="/release" class="no-link")
+  router-link(to="/release/grayumbersky" class="no-link")
     .release__top
       .release__top__imagesCount {{numberCount}} - {{releases.length}}
       .release__top__ref {{currentRelease.ref}}
@@ -103,6 +103,7 @@ export default {
     top 50%
     left 50%
     transform translate3D(-50%, -50%, 0)
+    z-index -1
 
     &__item
       width 50px
@@ -120,7 +121,7 @@ export default {
     position absolute
     top 45px
     left 200px
-    width 85vw
+    width 80vw
     text-align right
 
     &__item

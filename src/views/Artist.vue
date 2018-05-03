@@ -20,8 +20,9 @@
     p.artist__content__text.artist__content__text--right {{ currentArtist.descRight }}
     .artist__content__bottom
       Carousel(:perPage="3" :paginationEnabled="false")
-        Slide(v-for="(slide, key) in slides" :key="`slide-${key}`")
-          .artist__content__bottom__slide {{slide}}
+        Slide(v-for="(slide, key) in currentArtist.slides" :key="`slide-${key}`")
+          .artist__content__bottom__slide 
+            iframe.artist__content__bottom__slide__video(:src="slide" frameborder="0" allowfullscreen width="560" height="315")
   .artist__footer
     h2.artist__footer__title Also Discover
     .artist__footer__line.artist__footer__line--top
@@ -56,13 +57,7 @@ export default {
     },
     data () {
         return {
-            "slides": [
-                "slide1",
-                "slide2",
-                "slide3",
-                "slide4",
-                "slide5"
-            ],
+            
             "currentArtist": null,
             "artists": [
                 {
@@ -70,7 +65,12 @@ export default {
                     "location": "Paris",
                     "quote": "artist chosen quote",
                     "descLeft": "Quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim, sit. Venenatis tellus in metus vulputate eu scelerisque felis imperdiet proin fermentum leo vel orci porta? Montes, nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel? Urna, molestie at elementum eu, facilisis sed odio morbi quis commodo odio aenean sed adipiscing diam donec adipiscing.",
-                    "descRight": "Quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim, sit. Venenatis tellus in metus vulputate eu scelerisque felis imperdiet proin fermentum leo vel orci porta? Montes, nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel? Urna, molestie at elementum eu, facilisis sed odio morbi quis commodo odio aenean sed adipiscing diam donec adipiscing."
+                    "descRight": "Quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim, sit. Venenatis tellus in metus vulputate eu scelerisque felis imperdiet proin fermentum leo vel orci porta? Montes, nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel? Urna, molestie at elementum eu, facilisis sed odio morbi quis commodo odio aenean sed adipiscing diam donec adipiscing.",
+                    "slides": [
+                        "https://www.youtube.com/embed/00ZDM1-VfR4",
+                        "https://www.youtube.com/embed/00ZDM1-VfR4",
+                        "https://www.youtube.com/embed/00ZDM1-VfR4"
+                    ],
                 },
                 {
                     "name": "Monoclaus",
@@ -78,6 +78,7 @@ export default {
                     "quote": "artist chosen quote",
                     "descLeft": "Quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim, sit. Venenatis tellus in metus vulputate eu scelerisque felis imperdiet proin fermentum leo vel orci porta? Montes, nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel? Urna, molestie at elementum eu, facilisis sed odio morbi quis commodo odio aenean sed adipiscing diam donec adipiscing.",
                     "descRight": "Quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim, sit. Venenatis tellus in metus vulputate eu scelerisque felis imperdiet proin fermentum leo vel orci porta? Montes, nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel? Urna, molestie at elementum eu, facilisis sed odio morbi quis commodo odio aenean sed adipiscing diam donec adipiscing."
+                    
                 }
             ]
         }
@@ -266,6 +267,10 @@ export default {
         width 550px
         height 300px
         border 2px solid #1e1e1c
+
+        &__video
+          width 100%
+          height 100%
 
   &__footer
     display flex

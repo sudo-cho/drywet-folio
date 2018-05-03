@@ -33,8 +33,8 @@ export default new Router({
             component: Releases
         },
         {
-            path: '/release',
-            name: 'ReleaseItem',
+            path: '/release/:artistname',
+            name: 'release',
             component: ReleaseItem
         },
         {
