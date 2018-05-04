@@ -37,4 +37,5 @@ export default {
   &__logo
     width 350px
     height auto
+
 </style>

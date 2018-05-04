@@ -99,6 +99,19 @@ export default {
 
           &:after
             right 0
-      
+
+@media (max-width: 992px)
+  .dwmenu
+    width 70%
+
+@media (max-width: 640px)
+  .dwmenu
+    &--header
+      font-size 4em
+    &__item
+      &--header
+        &__separator
+          width 300px
+          left -76px
 </style>
 

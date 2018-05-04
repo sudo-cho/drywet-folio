@@ -1,21 +1,21 @@
 <template lang="pug">
 .release(v-if="artistPage")
   .release__top
-    .release__top__imagesCount 1 - 4
-    .release__top__ref DW0001
-  img.release__img(src="https://f4.bcbits.com/img/a2844472041_16.jpg")
+    .release__top__imagesCount 1 - 1
+    .release__top__ref DRWT001
+  img.release__img(:src="imagePath(imgRelease)")
   .release__bottom
-    .release__bottom__name Inner Calm
-    .release__bottom__options
-      .release__bottom__options__prev <--
-      .release__bottom__options__next -->
+    .release__bottom__name Molecular Engine
+    //- .release__bottom__options
+    //-   .release__bottom__options__prev <--
+    //-   .release__bottom__options__next -->
         
 .release(v-else-if="releasePage")
   router-link(to="/release/grayumbersky" class="no-link")
     .release__top
       .release__top__imagesCount {{numberCount}} - {{releases.length}}
       .release__top__ref {{currentRelease.ref}}
-    img.release__img(:src="currentRelease.img")
+    img.release__img(:src="imagePath(currentRelease.img)")
     .release__bottom
       .release__bottom__name {{currentRelease.artist}}
       .release__bottom__name {{currentRelease.name}}
@@ -30,7 +30,7 @@
       .release__banner__text__item {{currentRelease.ref}}
       .release__banner__text__item {{currentRelease.artist}}
       .release__banner__text__item {{currentRelease.date}}
-  img.release__img(:src="currentRelease.img")
+  img.release__img(:src="imagePath(currentRelease.img)")
 </template>
 
 <script>
@@ -38,17 +38,16 @@ export default {
     name: 'Release',
     props: {
         "artistPage": false,
-        "releasePage": false
+        "releasePage": false,
+        "imgRelease": null
     },
     data () {
         return {
             "numberCount": 1,
             "releases": [
-                {"name": "Inner Calm", "artist": "Monoclaus", "ref": "DW001", "img":"https://f4.bcbits.com/img/a2844472041_16.jpg", "date": "2018"},
-                {"name": "Coming soon", "artist": "coming soon", "ref": "DW002", "img":"https://f4.bcbits.com/img/a2844472041_16.jpg", "date": "2018"},
-                {"name": "Coming soon", "artist": "coming soon", "ref": "DW003", "img":"https://f4.bcbits.com/img/a2844472041_16.jpg", "date": "2018"},
-                {"name": "Coming soon", "artist": "coming soon", "ref": "DW004", "img":"https://f4.bcbits.com/img/a2844472041_16.jpg", "date": "2018"},
-                {"name": "Coming soon", "artist": "coming soon", "ref": "DW005", "img":"https://f4.bcbits.com/img/a2844472041_16.jpg", "date": "2018"}
+                {"name": "Molecular Engine", "artist": "Gray Umber Sky", "ref": "DRWT001", "img":"grayumbersky/release.jpg", "date": "2018"},
+                {"name": "Coming soon", "artist": "coming soon", "ref": "DRWT002", "img":"comingsoon.jpg", "date": "2018"},
+                {"name": "Coming soon", "artist": "coming soon", "ref": "DRWT003", "img":"comingsoon.jpg", "date": "2018"}
             ]
         }
     },
@@ -63,6 +62,9 @@ export default {
         },
         previousRelease () {
             this.numberCount > 1 ? this.numberCount-- : this.numberCount = this.releases.length
+        },
+        imagePath (path) {
+            return require("../assets/img/" + path)
         }
     }
 }
@@ -131,8 +133,56 @@ export default {
 
     &__text
       margin-left auto
-      width 250px
+      width 350px
       display flex
       justify-content space-between
       align-items center
+
+@media (max-width: 1030px)
+  .release
+    &__banner
+      width 90vw
+      right 20px
+      left 0
+      &__item
+        font-size 4.5em
+
+@media (max-width: 920px)
+  .release
+    &__options
+      width 600px
+
+
+@media (max-width: 880px)
+  .release
+    &__banner
+      width 95vw
+      right 10px
+      &__item
+        font-size 3.5em
+
+@media (max-width: 680px)
+  .release
+    &__banner
+      right 5px
+      &__item
+        font-size 2.5em
+      &__text
+        width 300px
+        font-size 1em
+    
+
+@media (max-width: 576px)
+  .release
+    width 300px
+    &__banner
+      &__item
+        font-size 1.8em
+      &__text
+        width 300px
+        font-size 1em
+
+    &__options
+      width 450px
+
 </style>

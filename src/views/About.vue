@@ -137,4 +137,70 @@ export default {
           &__img
             width 300px
             margin-top -130px
+
+@media (max-width: 1270px)
+  .about
+    &__section
+      &__content
+        &__right
+          font-size 2.5em
+          padding 0 100px
+
+@media (max-width: 992px)
+  .about
+    &__section
+      &__content
+        &__sub
+          font-size 2em
+        &__title
+          font-size 8em
+        &__arrow
+          height 80px
+
+@media (max-width: 912px)
+  .about
+    &__section
+      &__content
+        &__right
+          font-size 2em
+          padding 0 70px
+
+@media (max-width: 640px)
+  .about
+    &__section
+      &__content
+        &__left
+          &__content
+            &__img
+              width 200px
+              margin -100px
+        &__right
+          font-size 1.75em
+          padding 0 45px
+
+@media (max-width: 480px)
+  .about
+    &__section
+      &__content
+        &--2,
+        &--3
+          flex-direction column
+        &__left,
+        &__right
+          flex-basis content
+
+
+        &__left
+          &__content
+            &__img
+              width 200px
+              margin -100px
+        &__right
+          font-size 1.25em
+          padding 0 25px
+          &__location
+            display flex
+            align-items center
+            &__item
+              margin 0 15px
 </style>
