@@ -96,4 +96,15 @@ export default {
       
       &:after
         transform rotate(-45deg)
+
+@media (max-width: 640px)
+  .dwheader
+    top 15px
+    left 15px
+    &__menu
+      &__exit
+        top 15px
+        left 15px
+
+
 </style>

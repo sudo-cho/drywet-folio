@@ -5,9 +5,10 @@
     .releaseItem__content__lineseparator
     .releaseItem__content--left
       .releaseItem__content__title Listen
+      iframe(src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/205575529&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true" frameborder="0" allowfullscreen width="100%" height="166")
     .releaseItem__content--right
       .releaseItem__content__title Infos
-      p.releaseItem__text__description Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at augue eget arcu dictum varius duis at consectetur lorem donec? Posuere morbi leo urna, molestie! Lacus vel facilisis volutpat, est velit egestas dui, id ornare arcu odio ut sem nulla pharetra diam sit amet nisl suscipit adipiscing! Et, sollicitudin ac orci phasellus egestas tellus rutrum.
+      p.releaseItem__content__text Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at augue eget arcu dictum varius duis at consectetur lorem donec? Posuere morbi leo urna, molestie! Lacus vel facilisis volutpat, est velit egestas dui, id ornare arcu odio ut sem nulla pharetra diam sit amet nisl suscipit adipiscing! Et, sollicitudin ac orci phasellus egestas tellus rutrum.
 </template>
 
 <script>
@@ -45,14 +46,6 @@ export default {
     padding 275px 0 0 0
     margin 0 auto
   
-  &__text
-    text-align right
-
-    &__title
-      font 3em 'muller_narrowextrabold'
-    &__description
-      font 1.8em 'muller_narrowlight'
-      width 450px
 
   &__content
     display flex
@@ -60,8 +53,12 @@ export default {
     justify-content space-between
     align-items flex-start
     position relative
-    margin-top 100px
     
+    &__text
+      font 1.8em 'muller_narrowlight'
+      width 450px
+      text-align right
+
     &__lineseparator
       width 3px
       background #1e1e1c
@@ -77,4 +74,25 @@ export default {
       opacity 0.3
       text-align center
       text-transform uppercase
+      margin 100px 0 30px 0
+
+@media (max-width: 1280px)
+  .releaseItem
+    &__content
+      flex-direction column
+      justify-content center
+      align-items center
+      &__lineseparator
+        display none
+      &__text
+        text-align center
+
+@media (max-width: 675px)
+  .releaseItem
+    &__release
+      padding 180px 0 0 0 
+    &__content
+      &__title
+        margin 50px 0 30px 0
+        font 8em 'muller_narrowextrabold_italic'
 </style>

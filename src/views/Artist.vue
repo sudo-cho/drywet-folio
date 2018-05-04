@@ -6,11 +6,11 @@
       span.artist__top__location__item {{locations}}
       span.artist__top__location__item {{locations}}
       span.artist__top__location__item {{locations}}
-  .artist__releases
-    Release(:artistPage="true")
+  .artist__content__img
   .artist__content
     .artist__content__lineseparator
-    .artist__content__img
+    .artist__releases
+      Release(:artistPage="true" :imgRelease="currentArtist.releaseImg")
     p.artist__content__text.artist__content__text--left {{ currentArtist.descLeft }}
     .artist__content__quote
       p.artist__content__quote__text.artist__content__quote__text--default {{ currentArtist.quote }}
@@ -19,7 +19,7 @@
       p.artist__content__quote__text.artist__content__quote__text--outline {{ currentArtist.quote }}
     p.artist__content__text.artist__content__text--right {{ currentArtist.descRight }}
     .artist__content__bottom
-      Carousel(:perPage="3" :paginationEnabled="false")
+      Carousel(:perPage="2" :paginationEnabled="false")
         Slide(v-for="(slide, key) in currentArtist.slides" :key="`slide-${key}`")
           .artist__content__bottom__slide 
             iframe.artist__content__bottom__slide__video(:src="slide" frameborder="0" allowfullscreen width="560" height="315")
@@ -62,30 +62,22 @@ export default {
             "artists": [
                 {
                     "name": "Gray Umber Sky",
-                    "location": "Paris",
+                    "location": "SOMEWHERE IN THE FRENCH ALPS",
                     "quote": "artist chosen quote",
-                    "descLeft": "Quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim, sit. Venenatis tellus in metus vulputate eu scelerisque felis imperdiet proin fermentum leo vel orci porta? Montes, nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel? Urna, molestie at elementum eu, facilisis sed odio morbi quis commodo odio aenean sed adipiscing diam donec adipiscing.",
-                    "descRight": "Quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim, sit. Venenatis tellus in metus vulputate eu scelerisque felis imperdiet proin fermentum leo vel orci porta? Montes, nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel? Urna, molestie at elementum eu, facilisis sed odio morbi quis commodo odio aenean sed adipiscing diam donec adipiscing.",
+                    "descLeft": "Gray Umber Sky delivers us some deep melodic and atmospheric techno which only him knows the secret. 12 years of classical and jazz piano background gives him the opportunity to shape metodically his music's melodic melodic parts.",
+                    "descRight": "Thanks to his dad's friend, Gray Umber Sky owned a JUNO 106 for a short period when he was younger. This object is his first step into synthesizer and electronic music in general.",
                     "slides": [
-                        "https://www.youtube.com/embed/00ZDM1-VfR4",
-                        "https://www.youtube.com/embed/00ZDM1-VfR4",
-                        "https://www.youtube.com/embed/00ZDM1-VfR4"
+                        "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/205575529&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true",
+                        "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/261172226&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
                     ],
-                },
-                {
-                    "name": "Monoclaus",
-                    "location": "Paris",
-                    "quote": "artist chosen quote",
-                    "descLeft": "Quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim, sit. Venenatis tellus in metus vulputate eu scelerisque felis imperdiet proin fermentum leo vel orci porta? Montes, nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel? Urna, molestie at elementum eu, facilisis sed odio morbi quis commodo odio aenean sed adipiscing diam donec adipiscing.",
-                    "descRight": "Quis ipsum suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim, sit. Venenatis tellus in metus vulputate eu scelerisque felis imperdiet proin fermentum leo vel orci porta? Montes, nascetur ridiculus mus mauris vitae ultricies leo integer malesuada nunc vel? Urna, molestie at elementum eu, facilisis sed odio morbi quis commodo odio aenean sed adipiscing diam donec adipiscing."
-                    
+                    "releaseImg": "grayumbersky/release.jpg"
                 }
             ]
         }
     },
     computed: {
         locations () {
-            return R.join(" ", R.repeat(this.currentArtist.location, 16))
+            return R.join(" ", R.repeat(this.currentArtist.location, 5))
         },
         comingSoon () {
             return R.join(" ", R.repeat("coming soon", 6))
@@ -140,14 +132,41 @@ export default {
       white-space nowrap
 
       &__item
-        padding-right: 55px;
+        padding-right 55px
 
-  &__releases, &__content
+  &__releases
+    padding 35px 0
+
+  &__content
     padding 85px 0
+
+  &__releases,
+  &__content
     display flex
     flex-direction column
     align-items center
     justify-content center
+
+
+  .artist__content__img:before,
+  .artist__content__img:after
+    border 3px solid #1e1e1c
+    content ''
+    display block
+    position absolute
+    width 100%
+    height 100%
+    background #fff
+
+  .artist__content__img:before
+    top 10px
+    left 10px
+    z-index -1
+
+  .artist__content__img:after
+    top 17px
+    left 17px
+    z-index -2
 
   &__content
     position relative
@@ -173,8 +192,6 @@ export default {
         top -4px
 
     &__img,
-    .artist__content__img:before,
-    .artist__content__img:after,
     .artist__content__quote,
     .artist__content__quote:before,
     .artist__content__quote:after
@@ -191,13 +208,11 @@ export default {
       height 100%
       background #fff
 
-    .artist__content__img:before,
     .artist__content__quote:before
       top 10px
       left 10px
       z-index -1
 
-    .artist__content__img:after,
     .artist__content__quote:after
       top 17px
       left 17px
@@ -207,9 +222,9 @@ export default {
     &__img
       width 400px
       height 400px
-      margin-top 50px
-      background no-repeat url("https://f4.bcbits.com/img/a2844472041_16.jpg") 
+      background no-repeat url("../assets/img/grayumbersky/profile.jpg") center/100%
       position relative
+      margin 130px auto
 
     &__quote
       width 800px
@@ -264,8 +279,8 @@ export default {
 
       &__slide
         background #fff
-        width 550px
-        height 300px
+        width 100%
+        height auto
         border 2px solid #1e1e1c
 
         &__video
@@ -296,4 +311,57 @@ export default {
 
         &__item
           padding-right 15px
+
+@media (max-width: 992px)
+  .artist
+    &__top
+      &__title
+        font-size 4em
+
+
+@media (max-width: 850px)
+  .artist
+    &__content
+      &__quote
+        width 500px
+        padding 40px 0 30px 40px
+        &__text
+          font-size 1.8em
+        
+@media (max-width: 810px)
+  .artist
+    &__top
+      &__title
+        font-size 3em
+        padding 55px 15px 0 0
+    &__content
+      &__text
+        &--left
+          margin-right 60px
+        &--right 
+          margin-left 60px
+
+
+@media (max-width: 640px)
+  .artist
+    &__top
+      &__title
+        padding 35px 15px 0 0
+
+@media (max-width: 570px)
+  .artist
+    &__top
+      &__title
+        font-size 2em
+    &__content
+      &__text
+        &--left
+          margin-right 40px
+          padding 50px 0 0 80px
+
+        &--right 
+          margin-left 40px
+          padding 50px 80px 0 0
+
+
 </style>

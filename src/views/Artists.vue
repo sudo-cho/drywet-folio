@@ -80,9 +80,10 @@ export default {
 
     &__item
       margin 0
-      margin-top -35px
+      margin-top 0px
       display inline-block
       min-height 180px
+      line-height auto
 
       &--bolditalic
         font-family 'muller_narrowextrabold_italic'
@@ -90,5 +91,38 @@ export default {
         font-family 'muller_narrowextrabold'
       &--normal
         font-family 'muller_narrowlight'
+
+@media (max-width: 1180px)
+  .artists
+    &__names
+      font-size 5em
+    
+@media (max-width: 930px)
+  .artists
+    &__names
+      font-size 4em
+
+@media (max-width: 780px)
+  .artists
+    &__names
+      font-size 3em
+      &__item 
+        min-height 140px
+
+@media (max-width: 640px)
+  .artists
+    padding 30px 35px 0 0
+    &__names
+      font-size 2em
+      &__item 
+        min-height 100px
+
+@media (max-width: 480px)
+  .artists
+    padding 30px 35px 0 0
+    &__names
+      &__item 
+        min-height 80px
+
 
 </style>
